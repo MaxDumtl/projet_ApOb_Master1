@@ -9,11 +9,6 @@ public class Concert { //Entity
     private Date date;
     private Artist artist;
 
-    public Concert() { //TODO this constructor is necessary ?
-        //initialize id
-        id = globalId++;
-    }
-
     public Concert(Date date, Artist artist) {
         //initialize id
         id = globalId++;
