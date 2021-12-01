@@ -12,6 +12,6 @@ public interface RoomRepository {
     //public void findBy...() //TODO search other features to find with
 
     public Set<Room> load();
-    public void save(Room basket);
-    public void update(Room basket);
+    public void save(Room room);
+    public void update(Room room);
 }
