@@ -1,17 +1,15 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class Room { //Aggregate
     private static int globalId = 0;
     private final int id; //TODO check if necessary to encapsule ConcertId in a ValueObject if it's another thing than an int
 
     private int capacity;
-    private RoomSchedule roomSchedule;
-    private Date openingDate; //TODO check that there is only one by days
-    //TODO could be many opening date ?
+//    private RoomSchedule roomSchedule;
+    private Map<Calendar, RoomSchedule> roomSchedule; //un roomschedule pour chaque jour de l'annee
+//    private Date openingDate;
 
     private List<Event> eventList;
 

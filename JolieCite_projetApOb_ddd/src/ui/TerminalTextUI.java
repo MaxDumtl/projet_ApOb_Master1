@@ -2,6 +2,13 @@ package ui;
 
 public class TerminalTextUI {
 
+    //on cree un bag
+    //on cree un service on lui passe le bag aveec le constructeur
+    //on cree le worker et on lui psse le bag via constrcuteur
+    //on lance le worker.run
+    //on boucle infinie sur service pour le manipuler (dans this.run() )
+    //  \_ le worker tournera et executera les commmandes
+
     public TerminalTextUI() {
     }
 

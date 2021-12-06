@@ -18,7 +18,7 @@ public class Worker implements Runnable{
         //TODO check if jsut like that, it is necessary to run the thread by overriding or if need more code
 
         //get a command in the list
-        if(!this.commands.isEmpty()){ //TODO make a method in bag to check if empty
+        if(!this.commands.isEmpty()){
             Command currentCommand = this.commands.getCommand();
 
             //execute it

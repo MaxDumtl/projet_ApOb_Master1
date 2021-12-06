@@ -10,6 +10,10 @@ public class RoomSchedule { // Entity
     private Date openingDate;
     private Date endingTime;
 
+    //il faut que se soit un calendirer complet :
+    //"a chaque jour de lannee on va avoir des dates d'ouvertures et de fermeture"
+    //faire un map qui a chaqe date donne un couple debut fin
+
     public RoomSchedule(Date openingDate, Date endingTime) {
         //initialize id
         id = globalId++;
