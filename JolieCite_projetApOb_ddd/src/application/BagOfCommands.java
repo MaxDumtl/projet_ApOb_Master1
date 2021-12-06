@@ -21,4 +21,8 @@ public class BagOfCommands { // Application command manager
     public Command getCommand(){
         return this.commandsQueue.remove();
     }
+
+    public boolean isEmpty(){
+        return this.commandsQueue.isEmpty();
+    }
 }
