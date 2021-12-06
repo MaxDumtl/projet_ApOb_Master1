@@ -17,17 +17,15 @@ public class Worker implements Runnable{
         //TODO use a Thread (and Comand.execute() )
         //TODO check if jsut like that, it is necessary to run the thread by overriding or if need more code
 
-        //check if the queue is empty
-        if(this.commands.commandsQueue.isEmpty()){ //TODO make a method in bag to check if empty
+        //get a command in the list
+        if(!this.commands.commandsQueue.isEmpty()){ //TODO make a method in bag to check if empty
             Command currentCommand = this.commands.getCommand();
 
+            //execute it
             currentCommand.execute();
+
+        } else {
+            //TODO if the commend queue is empty (is it necessary to do something ?)
         }
-
-        //get a command in the list
-        //TODO ...
-
-        //execute it
-        //TODO ...
     }
 }
