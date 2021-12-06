@@ -19,7 +19,6 @@ public class BagOfCommands { // Application command manager
      * TO (get and) remove a command
      */
     public Command getCommand(){
-        //TODO return this.commandQueue.poll()
-        return null;
+        return this.commandsQueue.remove();
     }
 }
