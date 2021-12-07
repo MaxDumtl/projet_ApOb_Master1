@@ -41,4 +41,8 @@ public class Room { //Aggregate
     public void addEvent(Event event) {
         this.eventList.add(event);
     }
+
+    public void removeEvent(Event event) {
+        this.eventList.remove(event);
+    }
 }
