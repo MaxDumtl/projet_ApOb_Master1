@@ -4,13 +4,14 @@ import application.BagOfCommands;
 import application.RoomService;
 import application.Worker;
 
+import java.util.Scanner;
+
 public class TerminalTextUI {
 
     //OK : on cree un bag
     //OK : on cree un service on lui passe le bag aveec le constructeur
     //OK : on cree le worker et on lui psse le bag via constrcuteur
-
-    //on lance le worker.run
+    //OK : on lance le worker.run
     //on boucle infinie sur service pour le manipuler (dans this.run() )
     //  \_ le worker tournera et executera les commmandes
 
@@ -18,7 +19,10 @@ public class TerminalTextUI {
     private RoomService roomService;
     private Worker worker;
 
+    private boolean done = false;
+
     public TerminalTextUI() {
+        //TODO
     }
 
     public void run(){
@@ -29,32 +33,51 @@ public class TerminalTextUI {
 
         showPrincipalAction();
 
-        //get the terminal command
-        //TODO ...
-        int commandNumber = 0;
+        //run the worker
+        this.worker.run();
 
-        //switch to know what to do
-        switch(commandNumber){
-            case 1:
+        //read the console and execute principal action with a loop
+        while (!done) {
+            executePrincipalCommand();
+        }
+
+    }
+
+    private void executePrincipalCommand() {
+        //read the "command" in the terminal
+        Scanner scanner = new Scanner(System.in);//Scanner to read the console
+        String line = scanner.nextLine();
+
+        //switch to know what action to do
+        switch(line){
+            case "1": // Afficher le calendrier de la semaine
                 //TODO
                 break;
-            case 2:
+            case "2": // Afficher un jour
                 //TODO
                 break;
-            case 3:
+            case "3": // Creer un évènement
                 //TODO
                 break;
-            case 4:
+            case "4": // Associer un évènement à un jour
                 //TODO
                 break;
-            case 5:
+            case "5": // Retirer un évènement à un jour
                 //TODO
+                break;
+
+            case "aide": // Afficher la liste des commandes
+                showPrincipalAction();
+                break;
+
+            case "stop":
+                this.done = true;
                 break;
 
             default:
-                //TODO something ?
                 System.out.println("Action non reconnu, réessayer !");
                 showPrincipalAction();
+                break;
         }
     }
 
@@ -65,6 +88,7 @@ public class TerminalTextUI {
         System.out.println("3) Creer un évènement");
         System.out.println("4) Associer un évènement à un jour");
         System.out.println("5) Retirer un évènement à un jour");
+        System.out.println("aide) Affiche la liste des commandes");
     }
 
     private void intializeApplication() {
