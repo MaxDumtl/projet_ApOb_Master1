@@ -5,10 +5,11 @@ import java.util.Queue;
 
 public class BagOfCommands { // Application command manager
 
-    Queue<Command> commandsQueue = new ArrayDeque<>(); //like a list with priority
-    //TODO need a constructor ?
+    Queue<Command> commandsQueue; //like a list with priority
 
-
+    public BagOfCommands() {
+        this.commandsQueue = new ArrayDeque<>();
+    }
 
     /**
      * To add a command
@@ -24,6 +25,10 @@ public class BagOfCommands { // Application command manager
         return this.commandsQueue.remove();
     }
 
+    /**
+     * To know if the bag of commands is empty
+     * @return true if the bag is empty, false else
+     */
     public boolean isEmpty(){
         return this.commandsQueue.isEmpty();
     }

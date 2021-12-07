@@ -18,7 +18,8 @@ public class Room { //Aggregate
         id = globalId++;
 
         this.capacity = capacity;
-        this.roomSchedule = roomSchedule;
+//        this.roomSchedule = roomSchedule;
+        this.roomSchedule = new HashMap<>();
 
         this.eventList = new ArrayList<>();
     }
@@ -28,7 +29,8 @@ public class Room { //Aggregate
         id = globalId++;
 
         this.capacity = capacity;
-        this.roomSchedule = roomSchedule;
+//        this.roomSchedule = roomSchedule;
+        this.roomSchedule = new HashMap<>();
         this.eventList = eventList;
     }
 
