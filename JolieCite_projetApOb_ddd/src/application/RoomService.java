@@ -6,6 +6,10 @@ public class RoomService { //Application Service
 
     BagOfCommands commands;
 
+    public RoomService(BagOfCommands commands) {
+        this.commands = commands;
+    }
+
     //get a command and add to bag
 
     //QUERY (read repository)

@@ -8,6 +8,8 @@ public class BagOfCommands { // Application command manager
     Queue<Command> commandsQueue = new ArrayDeque<>(); //like a list with priority
     //TODO need a constructor ?
 
+
+
     /**
      * To add a command
      */
