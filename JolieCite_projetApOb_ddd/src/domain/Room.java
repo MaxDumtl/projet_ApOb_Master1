@@ -35,4 +35,8 @@ public class Room { //Aggregate
     public int getId() {
         return id;
     }
+
+    public void addEvent(Event event) {
+        this.eventList.add(event);
+    }
 }

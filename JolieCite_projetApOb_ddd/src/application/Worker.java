@@ -2,10 +2,10 @@ package application;
 
 public class Worker implements Runnable{
 
-    private BagOfCommands commands;  // dont initiate, get it from an other class (an aggregation)
+    private BagOfCommands commands;  // dont initiate, get it from an other class with the constructor (an aggregation)
 
     public Worker(BagOfCommands commands) {
-        this.commands = commands; //TODO maybe protect it with synch etc ... (idk its the teacher)
+        this.commands = commands;
     }
 
     /**

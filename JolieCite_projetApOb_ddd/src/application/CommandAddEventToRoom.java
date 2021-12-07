@@ -1,14 +1,31 @@
 package application;
 
-public class CommandAddEventToRoom extends Command{
-    @Override
-    public void execute() { //on lui passse les element/calsse via le constructeur
-        //TODO implements
+import domain.Event;
+import domain.Room;
+import domain.RoomRepository;
 
-        //il ocnnait le repository
-        //il lui demande de souvrir (il get un room)
-        //sur room on ajoute levent
-        //on sauvegarde le repository
+public class CommandAddEventToRoom extends Command{
+
+    private RoomRepository repository;
+    private int roomId;
+    private Event event;
+
+    //COnstructor help to get necessarry object to execute its "mission"
+    public CommandAddEventToRoom(RoomRepository repository, int roomId, Event event) {
+        this.repository = repository;
+        this.roomId = roomId;
+        this.event = event;
+    }
+
+    @Override
+    public void execute() {
+        //get the room
+        Room room = this.repository.findById(this.roomId);
+        //add the event to the room
+        room.addEvent(this.event);
+
+        //save the repository //TODO is it ok ?
+        this.repository.save(room);
 
     }
 }

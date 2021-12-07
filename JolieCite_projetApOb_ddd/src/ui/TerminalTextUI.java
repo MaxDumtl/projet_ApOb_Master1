@@ -5,7 +5,7 @@ import application.RoomService;
 import application.Worker;
 
 public class TerminalTextUI {
-    
+
     //OK : on cree un bag
     //OK : on cree un service on lui passe le bag aveec le constructeur
     //OK : on cree le worker et on lui psse le bag via constrcuteur
