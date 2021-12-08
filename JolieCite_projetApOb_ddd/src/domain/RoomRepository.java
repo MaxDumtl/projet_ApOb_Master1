@@ -9,13 +9,11 @@ public interface RoomRepository {
      * @return wanted room or NULL if it doesn't found
      */
     public Room findById(int id);
-    //public void findBy...() //TODO search other features to find with
+    public Set<Event> findByDay(int id, int year, int month, int numWeek, int day);
 
     public Set<Room> load();
     public void save(Room room);
     public void update(Room room);
-
-    public Set<Event> findByDay(int id, int year, int month, int numWeek, int day);
 
     public int getNumRoom();
 }

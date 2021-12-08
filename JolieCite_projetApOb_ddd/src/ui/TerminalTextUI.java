@@ -71,7 +71,6 @@ public class TerminalTextUI {
                 showWeekProgram(2021, 11, entry);
                 break;
             case "2": // Afficher un jour
-                //TODO
                 int weekNumber = 0;
                 int dayNumber = 0;
                 scannerWeek = new Scanner(System.in);
@@ -86,8 +85,8 @@ public class TerminalTextUI {
                 showDayProgram(2021, 11, weekNumber, dayNumber);
                 break;
 
-            case "3": // Afficher la liste des événements non-programmés
-                //TODO
+            case "3": // Afficher la liste des événements non-programmé
+                showUnprogrammedEvents();
                 break;
 
             case "4": // Associer un évènement à un jour
@@ -107,6 +106,10 @@ public class TerminalTextUI {
                 showPrincipalAction();
                 break;
         }
+    }
+
+    private void showUnprogrammedEvents() {
+        //TODO
     }
 
     private void showPrincipalAction() {

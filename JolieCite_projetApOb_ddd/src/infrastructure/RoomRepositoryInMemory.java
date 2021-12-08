@@ -119,7 +119,7 @@ public class RoomRepositoryInMemory implements RoomRepository {
 
     @Override
     public void update(Room room) {
-        this.memoryRoom.add(room); //TODO check if its done what it has to
+        this.memoryRoom.add(room);
     }
 
     @Override
