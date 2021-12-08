@@ -2,9 +2,9 @@ package ui;
 
 import application.*;
 import domain.*;
-import infrastructure.*;
 
 import java.util.Scanner;
+import java.util.Set;
 
 public class TerminalTextUI {
 
@@ -69,7 +69,7 @@ public class TerminalTextUI {
                     entry = Integer.parseInt(lineWeek);
                 }
 
-                affichWeekProgram(2021, 11, entry);
+                showWeekProgram(2021, 11, entry);
                 break;
             case "2": // Afficher un jour
                 //TODO
@@ -115,14 +115,21 @@ public class TerminalTextUI {
         this.worker = new Worker(this.bagOfCommands);
     }
 
-    private void affichWeekProgram(int year, int month, int numWeek){
+    private void showWeekProgram(int year, int month, int numWeek){
         System.out.println("==================================================================================");
-         
-        for(int i = 0; i < roomRepository.getNumRoom(); i++){
-            roomRepository.findByDay(i, year, month, numWeek);
+        for (int i = 0; i < 7; i++) {
+            showDayProgram(year, month, numWeek, i);
         }
-        
-        
         System.out.println("==================================================================================");
+    }
+
+    private void showDayProgram(int year, int month, int numWeek, int day){
+        for(int i = 0; i < roomRepository.getNumRoom(); i++){
+            Set<Event> eventsForThisDay = roomRepository.findByDay(i, year, month, numWeek, day);
+
+            for(Event currentEvent : eventsForThisDay){
+                //TODO show an event
+            }
+        }
     }
 }

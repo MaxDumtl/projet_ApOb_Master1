@@ -128,12 +128,18 @@ public class RoomRepositoryInMemory implements RoomRepository {
     }
 
     @Override
-    public Set<Event> findByDay(int id, int year, int month, int numWeek) {
+    public Set<Event> findByDay(int id, int year, int month, int numWeek, int day) {
         Set<Event> listEventWeek = new HashSet<>();
-
+        
         Room room = findById(id);
         
+        List<Event> temproraryEventList = room.getEvent();
+        for(Event currentEvent : temproraryEventList){
+            if(currentEvent.isSameDay(year, month, numWeek, day)){
+                listEventWeek.add(currentEvent);
+            }
+        }
 
-        return null;
+        return listEventWeek;
     }
 }

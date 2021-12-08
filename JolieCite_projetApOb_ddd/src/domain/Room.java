@@ -57,4 +57,8 @@ public class Room { //Aggregate
     public int getId() {
         return id;
     }
+
+    public List<Event> getEvent() {
+        return this.eventList;
+    }
 }

@@ -15,7 +15,7 @@ public interface RoomRepository {
     public void save(Room room);
     public void update(Room room);
 
-    public Set<Event> findByDay(int id, int year, int month, int numWeek);
+    public Set<Event> findByDay(int id, int year, int month, int numWeek, int day);
 
     public int getNumRoom();
 }
