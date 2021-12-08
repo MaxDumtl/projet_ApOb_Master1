@@ -54,7 +54,6 @@ public class TerminalTextUI {
         //switch to know what action to do
         switch(line){
             case "1": // Afficher le calendrier de la semaine
-                //TODO
                 int entry = 0;
                 Scanner scannerWeek = new Scanner(System.in);
 
@@ -73,6 +72,18 @@ public class TerminalTextUI {
                 break;
             case "2": // Afficher un jour
                 //TODO
+                int weekNumber = 0;
+                int dayNumber = 0;
+                scannerWeek = new Scanner(System.in);
+
+                System.out.println("Rentrez le numéro de semaine que vous souhaitez sélectionner");
+                lineWeek = scannerWeek.nextLine();
+                weekNumber = Integer.parseInt(lineWeek);
+                System.out.println("Rentrez le numéro du jour que vous souhaitez afficher (1 = lundi, ..., 7 = dimanche)");
+                lineWeek = scannerWeek.nextLine();
+                dayNumber = Integer.parseInt(lineWeek) - 1;//TODO debugg and check if it correctly to the good day number
+
+                showDayProgram(2021, 11, weekNumber, dayNumber);
                 break;
             case "3": // Creer un évènement
                 //TODO
