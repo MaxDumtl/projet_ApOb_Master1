@@ -85,13 +85,8 @@ public class TerminalTextUI {
 
                 showDayProgram(2021, 11, weekNumber, dayNumber);
                 break;
-            case "3": // Creer un évènement
-                //TODO
-                break;
-            case "4": // Associer un évènement à un jour
-                //TODO
-                break;
-            case "5": // Retirer un évènement à un jour
+
+            case "3": // Associer un évènement à un jour
                 //TODO
                 break;
 
@@ -114,9 +109,7 @@ public class TerminalTextUI {
         System.out.println("> Liste des actions");
         System.out.println("1) Afficher le calendrier de la semaine");
         System.out.println("2) Afficher un jour");
-        System.out.println("3) Creer un évènement");
-        System.out.println("4) Associer un évènement à un jour");
-        System.out.println("5) Retirer un évènement à un jour");
+        System.out.println("3) Associer un évènement à un jour");
         System.out.println("aide) Affiche la liste des commandes");
     }
 
