@@ -1,4 +1,5 @@
-import infrastructure.RoomRepositoryInMemory;
+import domain.*;
+import infrastructure.*;
 import ui.TerminalTextUI;
 
 public class Main {
@@ -8,7 +9,7 @@ public class Main {
         //set the data test
         RoomRepositoryInMemory roomRepositoryMemory = new RoomRepositoryInMemory();
 
-        TerminalTextUI ui = new TerminalTextUI();
+        TerminalTextUI ui = new TerminalTextUI(roomRepositoryMemory);
 
         //run ui
         ui.run();

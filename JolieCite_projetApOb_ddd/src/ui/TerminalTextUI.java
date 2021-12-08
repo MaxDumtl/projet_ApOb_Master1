@@ -1,8 +1,8 @@
 package ui;
 
-import application.BagOfCommands;
-import application.RoomService;
-import application.Worker;
+import application.*;
+import domain.*;
+import infrastructure.*;
 
 import java.util.Scanner;
 
@@ -19,10 +19,13 @@ public class TerminalTextUI {
     private RoomService roomService;
     private Worker worker;
 
+    private RoomRepository roomRepository;
+
     private boolean done = false;
 
-    public TerminalTextUI() {
+    public TerminalTextUI(RoomRepository roomRepository) {
         //TODO
+        this.roomRepository = roomRepository;
     }
 
     public void run(){
@@ -52,6 +55,21 @@ public class TerminalTextUI {
         switch(line){
             case "1": // Afficher le calendrier de la semaine
                 //TODO
+                int entry = 0;
+                Scanner scannerWeek = new Scanner(System.in);
+
+                System.out.println("Rentrez le numéro de semaine que vous souhaitez afficher");
+                String lineWeek = scannerWeek.nextLine();
+                entry = Integer.parseInt(lineWeek);
+                
+                while(entry < 1 || entry > 4){
+                    System.out.println("Votre saisie est invalide veuillez recommencer");
+                    
+                    lineWeek = scannerWeek.nextLine();
+                    entry = Integer.parseInt(lineWeek);
+                }
+
+                affichWeekProgram(2021, 11, entry);
                 break;
             case "2": // Afficher un jour
                 //TODO
@@ -95,5 +113,16 @@ public class TerminalTextUI {
         this.bagOfCommands = new BagOfCommands();
         this.roomService = new RoomService(this.bagOfCommands);
         this.worker = new Worker(this.bagOfCommands);
+    }
+
+    private void affichWeekProgram(int year, int month, int numWeek){
+        System.out.println("==================================================================================");
+         
+        for(int i = 0; i < roomRepository.getNumRoom(); i++){
+            roomRepository.findByDay(i, year, month, numWeek);
+        }
+        
+        
+        System.out.println("==================================================================================");
     }
 }

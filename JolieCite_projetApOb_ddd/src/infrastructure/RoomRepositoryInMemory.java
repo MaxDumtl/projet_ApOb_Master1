@@ -121,4 +121,19 @@ public class RoomRepositoryInMemory implements RoomRepository {
     public void update(Room room) {
         this.memoryRoom.add(room); //TODO check if its done what it has to
     }
+
+    @Override
+    public int getNumRoom(){
+        return this.memoryRoom.size();
+    }
+
+    @Override
+    public Set<Event> findByDay(int id, int year, int month, int numWeek) {
+        Set<Event> listEventWeek = new HashSet<>();
+
+        Room room = findById(id);
+        
+
+        return null;
+    }
 }
