@@ -12,4 +12,8 @@ public class Event { //Entity //TODO or maybe an Aggregate ???
 
         this.capacity = capacity;
     }
+
+    public int getId() {
+        return id;
+    }
 }
