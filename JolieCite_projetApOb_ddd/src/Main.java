@@ -1,13 +1,14 @@
+import infrastructure.RoomRepositoryInMemory;
 import ui.TerminalTextUI;
 
 public class Main {
 
     public static void main(String[] args){
 
-        TerminalTextUI ui = new TerminalTextUI();
+        //set the data test
+        RoomRepositoryInMemory roomRepositoryMemory = new RoomRepositoryInMemory();
 
-        //set test data
-        //...
+        TerminalTextUI ui = new TerminalTextUI();
 
         //run ui
         ui.run();

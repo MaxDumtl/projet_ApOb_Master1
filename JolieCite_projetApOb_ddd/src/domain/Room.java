@@ -13,14 +13,13 @@ public class Room { //Aggregate
 
     private List<Event> eventList;
 
-    public Room(int capacity, RoomSchedule roomSchedule) {
+    public Room(int capacity) {
         //Initialize id
         id = globalId++;
 
         this.capacity = capacity;
 //        this.roomSchedule = roomSchedule;
         this.roomSchedule = new HashMap<>();
-
         this.eventList = new ArrayList<>();
     }
 
@@ -34,15 +33,26 @@ public class Room { //Aggregate
         this.eventList = eventList;
     }
 
-    public int getId() {
-        return id;
+    public void addSchedule(Calendar date, int hourStart, int minuteStart, int hourEnd, int minuteEnd){
+        RoomSchedule newRoomSchedule = new RoomSchedule(hourStart, minuteStart, hourEnd, minuteEnd);
+        this.roomSchedule.put(date, newRoomSchedule);
     }
 
-    public void addEvent(Event event) {
-        this.eventList.add(event);
+    public void addConcert(Calendar date, Artist artist, int capacity) {
+        Event newEvent = new Concert(date, artist, capacity);
+        this.eventList.add(newEvent);
+    }
+
+    public void addPieceTheatre(Calendar beginDate, Calendar endingDate, String title, int capacity) {
+        Event newEvent = new PieceTheatre(beginDate,  endingDate, title, capacity);
+        this.eventList.add(newEvent);
     }
 
     public void removeEvent(Event event) {
         this.eventList.remove(event);
+    }
+
+    public int getId() {
+        return id;
     }
 }
