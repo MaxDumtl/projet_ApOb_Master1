@@ -6,6 +6,7 @@ public class Room { //Aggregate
     private static int globalId = 0;
     private final int id; //TODO check if necessary to encapsule ConcertId in a ValueObject if it's another thing than an int
 
+    private String name;
     private int capacity;
 //    private RoomSchedule roomSchedule;
     private Map<Calendar, RoomSchedule> roomSchedule; //un roomschedule pour chaque jour de l'annee
@@ -13,10 +14,11 @@ public class Room { //Aggregate
 
     private List<Event> eventList;
 
-    public Room(int capacity) {
+    public Room(String name, int capacity) {
         //Initialize id
         id = globalId++;
 
+        this.name = name;
         this.capacity = capacity;
 //        this.roomSchedule = roomSchedule;
         this.roomSchedule = new HashMap<>();

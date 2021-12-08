@@ -29,9 +29,9 @@ public class RoomRepositoryInMemory implements RoomRepository {
         Artist artist2 = new Artist("Orelsan");
         Artist artist3 = new Artist("Queens");
 
-        Room room1 = new Room(80);
-        Room room2 = new Room(100);
-        Room room3 = new Room(150);
+        Room room1 = new Room("salle1", 80);
+        Room room2 = new Room("salle2", 100);
+        Room room3 = new Room("salle3", 150);
 
         for(int i = 1; i < 31; i++){
             room1.addSchedule(new GregorianCalendar(2021, 11, i), 8, 0, 19, 0);
