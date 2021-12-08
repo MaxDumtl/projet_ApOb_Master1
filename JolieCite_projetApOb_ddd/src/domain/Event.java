@@ -1,6 +1,6 @@
 package domain;
 
-public class Event { //Entity //TODO or maybe an Aggregate ???
+public class Event { //Entity 
     private static int globalId = 0;
     private final int id; //TODO check if necessary to encapsule ConcertId in a ValueObject if it's another thing than an int
 

@@ -1,13 +1,14 @@
 package domain;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Concert extends Event{ //Entity
 
-    private Date date;
+    private Calendar date;
     private Artist artist;
 
-    public Concert(Date date, Artist artist, int capacity) {
+    public Concert(Calendar date, Artist artist, int capacity) {
         super(capacity);
 
 //        //initialize id //concert.id == event.id
@@ -17,7 +18,7 @@ public class Concert extends Event{ //Entity
         this.artist = artist;
     }
 
-    public Date getDate() {
+    public Calendar getDate() {
         return date;
     }
 

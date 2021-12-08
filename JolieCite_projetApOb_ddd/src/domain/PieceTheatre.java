@@ -1,16 +1,16 @@
 package domain;
 
-import java.util.Date;
+import java.util.*;
 
 public class PieceTheatre extends Event{ //Entity
 //    private static int globalId = 0;
 //    private final int id; //TODO check if necessary to encapsule ConcertId in a ValueObject if it's another thing than an int
 
-    private Date beginDate;
-    private Date endingDate;
+    private Calendar beginDate;
+    private Calendar endingDate;
     private String title;
 
-    public PieceTheatre(Date beginDate, Date endingDate, String title, int capacity) {
+    public PieceTheatre(Calendar beginDate, Calendar endingDate, String title, int capacity) {
 
         super(capacity);
 
@@ -28,11 +28,11 @@ public class PieceTheatre extends Event{ //Entity
 //        return id;
 //    }
 
-    public Date getBeginDate() {
+    public Calendar getBeginDate() {
         return beginDate;
     }
 
-    public Date getEndingDate() {
+    public Calendar getEndingDate() {
         return endingDate;
     }
 
