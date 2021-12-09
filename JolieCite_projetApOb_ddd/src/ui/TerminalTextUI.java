@@ -14,7 +14,6 @@ import javax.sound.sampled.SourceDataLine;
 public class TerminalTextUI {
 
     private BagOfCommands bagOfCommands;
-    private RoomService roomService;
     private Worker worker;
 
     private RoomRepository roomRepository;
@@ -207,7 +206,6 @@ public class TerminalTextUI {
 
     private void intializeApplication() {
         this.bagOfCommands = new BagOfCommands();
-        this.roomService = new RoomService(this.bagOfCommands);
         this.worker = new Worker(this.bagOfCommands);
     }
 
