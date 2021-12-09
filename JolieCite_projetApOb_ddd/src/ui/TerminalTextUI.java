@@ -129,7 +129,7 @@ public class TerminalTextUI {
                     roomNumber = Integer.parseInt(lineRoom);
                 }
 
-                addEventToRoom(roomNumber, eventNumber);
+                addEventToRoom(roomNumber, eventNumber, 0);
                 System.out.println("L'événement " + eventNumber + " à été ajouté à la salle " + roomNumber);
                 break;
 
@@ -230,7 +230,7 @@ public class TerminalTextUI {
         }
     }
 
-    public void addEventToRoom(int idRoom, int idEvent){
-        this.bagOfCommands.pushCommand(new CommandAddEventToRoom(this.roomRepository, idRoom, idEvent));
+    public void addEventToRoom(int idRoom, int idEvent, int hour){
+        this.bagOfCommands.pushCommand(new CommandAddEventToRoom(this.roomRepository, idEvent, hour));
     }
 }

@@ -70,4 +70,8 @@ public class Room { //Aggregate
     public List<Event> getEvent() {
         return this.eventList;
     }
+
+    public RoomSchedule getSchedule(Calendar day) {
+        return this.roomSchedule.get(day);
+    }
 }

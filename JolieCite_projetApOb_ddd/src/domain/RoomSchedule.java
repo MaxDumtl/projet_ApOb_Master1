@@ -29,6 +29,22 @@ public class RoomSchedule { // Entity
     
     }
 
+    public int getOpeningHour() {
+        return openingHour;
+    }
+
+    public int getOpeningMinute() {
+        return openingMinute;
+    }
+
+    public int getEndingHour() {
+        return endingHour;
+    }
+
+    public int getEndingMinute() {
+        return endingMinute;
+    }
+
     // public RoomSchedule(Calendar openingTime, int hourOpened) {
     //     //initialize id
     //     id = globalId++;
