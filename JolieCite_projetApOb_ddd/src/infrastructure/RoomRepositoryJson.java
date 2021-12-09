@@ -61,14 +61,14 @@ public class RoomRepositoryJson implements RoomRepository{
 
         Set<Room> loaded_memory_set = gson_object.fromJson(memory_json, memory_type);
        
-        return loaded_memory_set; //TODO
+        return loaded_memory_set;
     }
 
     @Override
     public void save(Room room) {
         this.memory.add(room);
 
-        Gson gson_object = new Gson(); //TODO import the Gson class
+        Gson gson_object = new Gson();
         String memory_json = gson_object.toJson(this.memory);
 
         try {
@@ -83,7 +83,7 @@ public class RoomRepositoryJson implements RoomRepository{
 
     @Override
     public void update(Room room) {
-        this.memory.add(room); //TODO check if its done what it has to
+        this.memory.add(room);
     }
 
     @Override

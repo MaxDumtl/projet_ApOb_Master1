@@ -102,13 +102,12 @@ public class RoomRepositoryInMemory implements RoomRepository {
     @Override
     public Set<Room> load() {
         //TODO
-
         return null;
     }
 
     @Override
     public void save(Room room) {
-//        this.memoryRoom.add(room);
+        this.memoryRoom.add(room);
     }
 
     @Override

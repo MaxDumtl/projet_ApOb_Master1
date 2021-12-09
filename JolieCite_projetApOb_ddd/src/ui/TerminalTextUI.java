@@ -108,7 +108,6 @@ public class TerminalTextUI {
                 break;
 
             case "5": // Associer un évènement à un jour
-                //TODO
                 int maxIdEvent = this.roomRepository.getNumEvent();
                 Scanner scannerEventHour = new Scanner(System.in);
                                

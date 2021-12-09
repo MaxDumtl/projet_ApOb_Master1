@@ -23,7 +23,7 @@ public class CommandAddEventToRoom extends Command {
     public void execute() {
         //get the room & the event
         Event event = this.repository.finEventdById(eventId);
-        Room room = getSelectedRoom(); //TODO
+        Room room = getSelectedRoom();
 
         //add the event to the room
         if (event instanceof Concert) {
@@ -33,9 +33,6 @@ public class CommandAddEventToRoom extends Command {
             PieceTheatre piece = (PieceTheatre) event;
             room.addEvent(piece.getBeginDate(), piece.getEndingDate(), piece.getTitle(), piece.getCapacity());
         }
-
-        //save the repository //TODO is it ok ?
-        this.repository.save(room);
 
     }
 
@@ -52,7 +49,7 @@ public class CommandAddEventToRoom extends Command {
 
             //check hour
             Calendar programmedDay = null;
-            if (event instanceof Concert) { //TODO change it
+            if (event instanceof Concert) {
                 Concert currentConcert = (Concert) event;
                 programmedDay = currentConcert.getDate();
 
