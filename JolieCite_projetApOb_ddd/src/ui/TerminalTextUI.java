@@ -218,6 +218,20 @@ public class TerminalTextUI {
         
         Set<Room> listRoom = this.roomRepository.getRooms();
 
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, year);
+        cal.set(Calendar.MONTH, month);
+        cal.set(Calendar.DAY_OF_MONTH, 1);
+
+        int firstWeekOfMonth = cal.get(Calendar.WEEK_OF_YEAR);
+        int numWeekInYear = firstWeekOfMonth + numWeek;
+        cal.set(Calendar.WEEK_OF_YEAR, numWeekInYear);
+
+        int firstDayOfWeek = cal.getFirstDayOfWeek();
+        int lastDayOfWeek = Calendar.SATURDAY - firstDayOfWeek;
+        System.out.println(numWeek + " / " + firstDayOfWeek + " / " + lastDayOfWeek);
+
+
         System.out.println("==================================================================================");
         for (int i = 0; i < 7; i++) {
             // showDayProgram(year, month, i);
