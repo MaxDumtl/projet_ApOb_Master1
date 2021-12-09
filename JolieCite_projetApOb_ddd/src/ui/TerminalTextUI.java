@@ -87,11 +87,11 @@ public class TerminalTextUI {
                 lineWeek = scannerWeek.nextLine();
                 dayNumber = Integer.parseInt(lineWeek) - 1;//TODO debugg and check if it correctly to the good day number
 
-                showDayProgram(2021, 11, weekNumber, dayNumber);
+                showDayProgram(2021, 11, dayNumber);
                 break;
 
-            case "3": // Afficher la liste des événements non-programmé
-                showUnprogrammedEvents();
+            case "3": // Afficher la liste des événements
+                showEvents();
                 break;
 
             case "4": // Associer un évènement à un jour
@@ -113,10 +113,10 @@ public class TerminalTextUI {
         }
     }
 
-    private void showUnprogrammedEvents() {
+    private void showEvents() {
         SimpleDateFormat dayFormat = new SimpleDateFormat("dd/MMMM/yyyy");
-        Set<Event> listEvents = roomRepository.getEvents();
-
+        Set<Event> listEvents = this.roomRepository.getEvents();
+        System.out.println(listEvents);
         for(Event currentEvent : listEvents){
             if(currentEvent instanceof Concert){
                 Concert currentConcert = (Concert)currentEvent;
@@ -124,7 +124,7 @@ public class TerminalTextUI {
             }
             else{
                 PieceTheatre currentPiece = (PieceTheatre)currentEvent;
-                System.out.println("("+currentPiece.getId()+")Pièce de Théatre | Nom : " + currentPiece.getTitle() + " -  Dates : du " + dayFormat.format(currentPiece.getBeginDate().getTime()) +"-"+ dayFormat.format(currentPiece.getEndingDate().getTime())  + " -  Capacité : " + currentPiece.getCapacity());
+                System.out.println("("+currentPiece.getId()+") Pièce de Théatre | Nom : " + currentPiece.getTitle() + " -  Dates : du " + dayFormat.format(currentPiece.getBeginDate().getTime()) +"-"+ dayFormat.format(currentPiece.getEndingDate().getTime())  + " -  Capacité : " + currentPiece.getCapacity());
             }
         }
 
@@ -134,7 +134,7 @@ public class TerminalTextUI {
         System.out.println("> Liste des actions");
         System.out.println("1) Afficher le calendrier de la semaine");
         System.out.println("2) Afficher un jour");
-        System.out.println("3) Afficher la liste des événements non-programmés");
+        System.out.println("3) Afficher la liste des événements");
         System.out.println("4) Associer un évènement à un jour");
         System.out.println("aide) Affiche la liste des commandes");
     }
@@ -148,7 +148,7 @@ public class TerminalTextUI {
     private void showWeekProgram(int year, int month, int numWeek){
         System.out.println("==================================================================================");
         for (int i = 0; i < 7; i++) {
-            showDayProgram(year, month, numWeek, i);
+            // showDayProgram(year, month, i);
         }
         System.out.println("==================================================================================");
     }

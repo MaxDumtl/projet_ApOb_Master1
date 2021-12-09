@@ -21,6 +21,7 @@ public class RoomRepositoryInMemory implements RoomRepository {
         this.memoryRoom = new HashSet<>();
         this.memoryEvent = new HashSet<>();
 
+        createTest();
         
     }
 
@@ -34,33 +35,33 @@ public class RoomRepositoryInMemory implements RoomRepository {
         Room room3 = new Room("salle3", 150);
 
         for(int i = 1; i < 31; i++){
-            room1.addSchedule(new GregorianCalendar(2021, 11, i), 8, 0, 19, 0);
+            room1.addSchedule(new GregorianCalendar(2021, 10, i), 8, 0, 19, 0);
         }
         for(int i = 1; i < 31; i++){
-            room2.addSchedule(new GregorianCalendar(2021, 11, i), 8, 0, 12, 0);
+            room2.addSchedule(new GregorianCalendar(2021, 10, i), 8, 0, 12, 0);
         }
         for(int i = 1; i < 31; i++){
-            room3.addSchedule(new GregorianCalendar(2021, 11, i), 13, 0, 23, 0);
+            room3.addSchedule(new GregorianCalendar(2021, 10, i), 13, 0, 23, 0);
         }
         memoryRoom.add(room1);
         memoryRoom.add(room2);
         memoryRoom.add(room3);
 
-        Event concert1 = new Concert(new GregorianCalendar(2021, 11, 12), artist1, 70);
-        Event concert2 = new Concert(new GregorianCalendar(2021, 11, 16), artist1, 80);
-        Event concert3 = new Concert(new GregorianCalendar(2021, 11, 5), artist2, 135);
-        Event concert4 = new Concert(new GregorianCalendar(2021, 11, 24), artist3, 111);
-        Event concert5 = new Concert(new GregorianCalendar(2021, 11, 12), artist3, 98);
+        Event concert1 = new Concert(new GregorianCalendar(2021, 10, 12), artist1, 70);
+        Event concert2 = new Concert(new GregorianCalendar(2021, 10, 16), artist1, 80);
+        Event concert3 = new Concert(new GregorianCalendar(2021, 10, 5), artist2, 135);
+        Event concert4 = new Concert(new GregorianCalendar(2021, 10, 24), artist3, 111);
+        Event concert5 = new Concert(new GregorianCalendar(2021, 10, 12), artist3, 98);
+        
+        Event concert6 = new Concert(new GregorianCalendar(2021, 10, 20), artist2, 160);
 
-        Event concert6 = new Concert(new GregorianCalendar(2021, 11, 20), artist2, 160);
-
-        Event piece1 = new PieceTheatre(new GregorianCalendar(2021, 11, 1), new GregorianCalendar(2021, 11, 12), "nom_piece_1", 70);
-        Event piece2 = new PieceTheatre(new GregorianCalendar(2021, 11, 16), new GregorianCalendar(2021, 11, 20), "nom_piece_2", 80);
-        Event piece3 = new PieceTheatre(new GregorianCalendar(2021, 11, 5), new GregorianCalendar(2021, 11, 17), "nom_piece_3", 135);
-        Event piece4 = new PieceTheatre(new GregorianCalendar(2021, 11, 24), new GregorianCalendar(2021, 11, 30), "nom_piece_4", 111);
-        Event piece5 = new PieceTheatre(new GregorianCalendar(2021, 11, 8), new GregorianCalendar(2021, 11, 15), "nom_piece_5", 98);
-
-        Event piece6 = new PieceTheatre(new GregorianCalendar(2021, 11, 13), new GregorianCalendar(2021, 11, 30), "nom_piece_6", 98);
+        Event piece1 = new PieceTheatre(new GregorianCalendar(2021, 10, 1), new GregorianCalendar(2021, 10, 12), "nom_piece_1", 70);
+        Event piece2 = new PieceTheatre(new GregorianCalendar(2021, 10, 16), new GregorianCalendar(2021, 10, 20), "nom_piece_2", 80);
+        Event piece3 = new PieceTheatre(new GregorianCalendar(2021, 10, 5), new GregorianCalendar(2021, 10, 17), "nom_piece_3", 135);
+        Event piece4 = new PieceTheatre(new GregorianCalendar(2021, 10, 24), new GregorianCalendar(2021, 10, 30), "nom_piece_4", 111);
+        Event piece5 = new PieceTheatre(new GregorianCalendar(2021, 10, 8), new GregorianCalendar(2021, 10, 15), "nom_piece_5", 98);
+        
+        Event piece6 = new PieceTheatre(new GregorianCalendar(2021, 10, 13), new GregorianCalendar(2021, 10, 30), "nom_piece_6", 98);
     
         memoryEvent.add(concert1);
         memoryEvent.add(concert2);
