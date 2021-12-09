@@ -58,6 +58,11 @@ public class Room { //Aggregate
         return id;
     }
 
+    public String getName(){
+        return this.name;
+    }
+
+
     public List<Event> getEvent() {
         return this.eventList;
     }

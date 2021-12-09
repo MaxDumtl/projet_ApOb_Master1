@@ -3,8 +3,13 @@ package ui;
 import application.*;
 import domain.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 import java.util.Set;
+
+import javax.sound.sampled.SourceDataLine;
 
 public class TerminalTextUI {
 
@@ -135,13 +140,23 @@ public class TerminalTextUI {
         System.out.println("==================================================================================");
     }
 
-    private void showDayProgram(int year, int month, int numWeek, int day){
-        for(int i = 0; i < roomRepository.getNumRoom(); i++){
-            Set<Event> eventsForThisDay = roomRepository.findByDay(i, year, month, numWeek, day);
+    private void showDayProgram(int year, int month, int day){
+        SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE /dd/MMMM/yyyy");
+        SimpleDateFormat eventFormat = new SimpleDateFormat("HH : mm");
 
+        Calendar searchedDay = new GregorianCalendar(year, month - 1, day);
+        System.out.println(dayFormat.format(searchedDay.getTime()));
+        System.out.println("=================================================================");
+
+        for(int i = 0; i < roomRepository.getNumRoom(); i++){
+            Set<Event> eventsForThisDay = roomRepository.findByDay(i, year, month, day);
+
+            System.out.println("---");
+            System.out.print(roomRepository.findById(i).getName() + " : ");
             for(Event currentEvent : eventsForThisDay){
-                //TODO show an event
+                System.out.print("[ " + eventFormat.format(currentEvent.getProgrammedDay().getTime()) + " ]");
             }
+            System.out.println("---");
         }
     }
 }

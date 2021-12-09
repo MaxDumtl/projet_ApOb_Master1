@@ -21,7 +21,11 @@ public class Event { //Entity
         return id;
     }
 
-    public boolean isSameDay(int year, int month, int numWeek, int day) {
+    public Calendar getProgrammedDay(){
+        return this.programmedDay;
+    }
+
+    public boolean isSameDay(int year, int month, int day) {
         //if the day is not programmed
         if(this.programmedDay == null){
             return false;
@@ -30,9 +34,8 @@ public class Event { //Entity
         //TODO debugg it
         boolean isSameYear = this.programmedDay.get(Calendar.YEAR) == year;
         boolean isSameMonth = this.programmedDay.get(Calendar.MONTH) == month;
-        boolean isSameWeek = this.programmedDay.get(Calendar.WEEK_OF_YEAR) == numWeek; //TODO is it number of week in the year right ?
-        boolean isSameDay = this.programmedDay.get(Calendar.DAY_OF_WEEK) == day;
+        boolean isSameDay = this.programmedDay.get(Calendar.DAY_OF_MONTH) == day;
 
-        return isSameDay && isSameMonth && isSameYear && isSameYear && isSameWeek;
+        return isSameDay && isSameMonth && isSameYear && isSameYear;
     }
 }
