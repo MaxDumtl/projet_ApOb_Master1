@@ -25,6 +25,10 @@ public class Event { //Entity
         return this.programmedDay;
     }
 
+    public int getCapacity(){
+        return this.capacity;
+    }
+
     public boolean isSameDay(int year, int month, int day) {
         //if the day is not programmed
         if(this.programmedDay == null){

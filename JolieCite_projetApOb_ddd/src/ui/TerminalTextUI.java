@@ -114,7 +114,20 @@ public class TerminalTextUI {
     }
 
     private void showUnprogrammedEvents() {
-        //TODO
+        SimpleDateFormat dayFormat = new SimpleDateFormat("dd/MMMM/yyyy");
+        Set<Event> listEvents = roomRepository.getEvents();
+
+        for(Event currentEvent : listEvents){
+            if(currentEvent instanceof Concert){
+                Concert currentConcert = (Concert)currentEvent;
+                System.out.println("("+currentConcert.getId()+") Concert | Artiste : " + currentConcert.getArtist().getName() + " -  Date : " + dayFormat.format(currentConcert.getDate().getTime()) + " -  Capacité : " + currentConcert.getCapacity());
+            }
+            else{
+                PieceTheatre currentPiece = (PieceTheatre)currentEvent;
+                System.out.println("("+currentPiece.getId()+")Pièce de Théatre | Nom : " + currentPiece.getTitle() + " -  Dates : du " + dayFormat.format(currentPiece.getBeginDate().getTime()) +"-"+ dayFormat.format(currentPiece.getEndingDate().getTime())  + " -  Capacité : " + currentPiece.getCapacity());
+            }
+        }
+
     }
 
     private void showPrincipalAction() {

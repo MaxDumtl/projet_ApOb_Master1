@@ -142,4 +142,9 @@ public class RoomRepositoryInMemory implements RoomRepository {
 
         return listEventWeek;
     }
+
+    @Override
+    public Set<Event> getEvents() {
+        return this.memoryEvent;
+    }
 }

@@ -16,4 +16,5 @@ public interface RoomRepository {
     public void update(Room room);
 
     public int getNumRoom();
+    public Set<Event> getEvents();
 }
