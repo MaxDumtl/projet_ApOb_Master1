@@ -23,7 +23,7 @@ public class CommandAddEventToRoom extends Command {
     public void execute() {
         //get the room & the event
         Event event = this.repository.finEventdById(eventId);
-        Room room = getSelectedRoom(); //TODO
+        Room room = getSelectedRoom();
 
         //add the event to the room
         if (event instanceof Concert) {
@@ -34,9 +34,6 @@ public class CommandAddEventToRoom extends Command {
             room.addEvent(piece.getBeginDate(), piece.getEndingDate(), piece.getTitle(), piece.getCapacity());
         }
 
-        //save the repository //TODO is it ok ?
-        this.repository.save(room);
-
     }
 
     private Room getSelectedRoom() {
@@ -45,39 +42,31 @@ public class CommandAddEventToRoom extends Command {
         int eventCapacity = event.getCapacity();
 
         for (Room currentRoom : this.repository.getRooms()) { // Loop on every loop
-            //check room capacity
-            if (eventCapacity > currentRoom.getCapacity()) {
-                break; // go to next room loop //TODO check if its correct
+            //check if the room capacity is correct
+            if (!(eventCapacity > currentRoom.getCapacity())) {
+
+                //check hour
+                Calendar programmedDay = null;
+                if (event instanceof Concert) {
+                    Concert currentConcert = (Concert) event;
+                    programmedDay = currentConcert.getDate();
+
+                } else if (event instanceof PieceTheatre) {
+                    PieceTheatre currentPieceTheatre = (PieceTheatre) event;
+                    programmedDay = currentPieceTheatre.getBeginDate();
+                }
+
+                int programmedDayOpeningHour = currentRoom.getSchedule(programmedDay).getOpeningHour();
+                int programmedDayEndingHour = currentRoom.getSchedule(programmedDay).getEndingHour();
+
+                //check if the hour schedule is correct
+                if (!(this.hour > programmedDayEndingHour && this.hour < programmedDayOpeningHour)) {
+                    //check the other constraints
+                    //TODO
+
+                    selectedRoom = currentRoom;
+                }
             }
-
-            //check hour
-            Calendar programmedDay = null;
-            if (event instanceof Concert) { //TODO change it
-                Concert currentConcert = (Concert) event;
-                programmedDay = currentConcert.getDate();
-
-            } else if (event instanceof PieceTheatre){
-                PieceTheatre currentPieceTheatre = (PieceTheatre) event;
-                programmedDay = currentPieceTheatre.getBeginDate(); //TODO change it to check for every day between begin and end
-            }
-
-            int programmedDayOpeningHour = currentRoom.getSchedule(programmedDay).getOpeningHour();
-            int programmedDayEndingHour = currentRoom.getSchedule(programmedDay).getEndingHour();
-
-            if(this.hour > programmedDayEndingHour && this.hour < programmedDayOpeningHour){
-                break; // go to next room loop //TODO check if its correct
-            }
-
-            //check if there is already a concert at this room in this weekend
-            //TODO
-
-            //check if it could be programmed during a week end
-            //TODO (only for PieceTheatre)
-
-            //check if already an event at this room and hour
-            //TODO
-
-            selectedRoom = currentRoom;
         }
 
         return selectedRoom;

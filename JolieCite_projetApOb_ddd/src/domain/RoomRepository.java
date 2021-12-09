@@ -9,6 +9,7 @@ public interface RoomRepository {
      * @return wanted room or NULL if it doesn't found
      */
     public Room findById(int id);
+
     public Event finEventdById(int id);
     public Set<Event> findByDay(int id, int year, int month, int day);
 

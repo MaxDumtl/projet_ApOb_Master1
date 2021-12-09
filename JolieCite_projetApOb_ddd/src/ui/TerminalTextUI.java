@@ -14,7 +14,6 @@ import javax.sound.sampled.SourceDataLine;
 public class TerminalTextUI {
 
     private BagOfCommands bagOfCommands;
-    private RoomService roomService;
     private Worker worker;
 
     private RoomRepository roomRepository;
@@ -122,7 +121,6 @@ public class TerminalTextUI {
                 break;
 
             case "5": // Associer un évènement à un jour
-                //TODO
                 int maxIdEvent = this.roomRepository.getNumEvent();
                 Scanner scannerEventHour = new Scanner(System.in);
                                
@@ -220,7 +218,6 @@ public class TerminalTextUI {
 
     private void intializeApplication() {
         this.bagOfCommands = new BagOfCommands();
-        this.roomService = new RoomService(this.bagOfCommands);
         this.worker = new Worker(this.bagOfCommands);
     }
 
@@ -261,8 +258,6 @@ public class TerminalTextUI {
                     System.out.println(" Pièce de Théatre | Nom : " + currentPiece.getTitle() + " -  Dates : du " + dayFormat.format(currentPiece.getBeginDate().getTime()) +"-"+ dayFormat.format(currentPiece.getEndingDate().getTime())  + " -  Capacité : " + currentPiece.getCapacity());
                 }
 
-
-//                System.out.print("[ " + eventFormat.format(currentEvent.getProgrammedDay().getTime()) + " ]");
             }
             System.out.println("\n---");
         }

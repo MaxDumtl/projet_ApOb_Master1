@@ -14,10 +14,13 @@ public class RoomRepositoryInMemory implements RoomRepository {
         this.memoryRoom = new HashSet<>();
         this.memoryEvent = new HashSet<>();
 
+        //To initialize test data
         createTest();
-        
     }
 
+    /**
+     * Initialize tests' list of event and room in memory
+     */
     public void createTest(){
         Artist artist1 = new Artist("Damso");
         Artist artist2 = new Artist("Orelsan");
@@ -101,14 +104,12 @@ public class RoomRepositoryInMemory implements RoomRepository {
 
     @Override
     public Set<Room> load() {
-        //TODO
-
         return null;
     }
 
     @Override
     public void save(Room room) {
-//        this.memoryRoom.add(room);
+        this.memoryRoom.add(room);
     }
 
     @Override
