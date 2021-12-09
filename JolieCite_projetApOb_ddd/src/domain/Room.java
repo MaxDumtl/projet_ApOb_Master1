@@ -37,13 +37,11 @@ public class Room { //Aggregate
     }
 
     public void addEvent(Calendar date, Artist artist, int capacity) {
-//        Event newEvent = new Concert(date, artist, capacity);
         Event newEvent = new Concert(date, artist, capacity, date);
         this.eventList.add(newEvent);
     }
 
     public void addEvent(Calendar beginDate, Calendar endingDate, String title, int capacity) {
-//        Event newEvent = new PieceTheatre(beginDate, endingDate, title, capacity);
         Event newEvent = new PieceTheatre(beginDate, endingDate, title, capacity, beginDate);
         this.eventList.add(newEvent);
     }
