@@ -11,7 +11,7 @@ public class Event { //Entity
 
     public Event(int capacity) {
         //initialize id
-        this.id = globalId++;
+        this.id = ++globalId;
         this.capacity = capacity;
 
         this.programmedDay = null;

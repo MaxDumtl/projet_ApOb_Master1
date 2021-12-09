@@ -96,6 +96,37 @@ public class TerminalTextUI {
 
             case "4": // Associer un évènement à un jour
                 //TODO
+                int maxIdRoom = this.roomRepository.getNumRoom();
+                int maxIdEvent = this.roomRepository.getNumEvent();
+                Scanner scannerEventRoom = new Scanner(System.in);
+                
+                int roomNumber = 0;
+                int eventNumber = 0;
+                
+                System.out.println("Rentrez le numéro de l'événement que vous voulez programmer");
+                String lineEventRoom = scannerEventRoom.nextLine();
+                eventNumber = Integer.parseInt(lineEventRoom);
+                
+                while(eventNumber < 1 || eventNumber > maxIdEvent){
+                    System.out.println("L'événement que vous avez saisi est invalide veuillez recommencer");
+                    
+                    lineEventRoom = scannerEventRoom.nextLine();
+                    eventNumber = Integer.parseInt(lineEventRoom);
+                }
+
+                System.out.println("Rentrez le numéro de la salle à laquelle vous voulez programmer l'événement");
+                String lineRoom = scannerEventRoom.nextLine();
+                roomNumber = Integer.parseInt(lineRoom);
+                
+                while(roomNumber < 1 || roomNumber > maxIdRoom){
+                    System.out.println("La salle que vous avez saisie est invalide veuillez recommencer");
+                    
+                    lineRoom = scannerEventRoom.nextLine();
+                    roomNumber = Integer.parseInt(lineRoom);
+                }
+
+                addEventToRoom(roomNumber, eventNumber);
+                System.out.println("L'événement " + eventNumber + " à été ajouté à la salle " + roomNumber);
                 break;
 
             case "aide": // Afficher la liste des commandes
@@ -171,5 +202,9 @@ public class TerminalTextUI {
             }
             System.out.println("---");
         }
+    }
+
+    public void addEventToRoom(int idRoom, int idEvent){
+        this.bagOfCommands.pushCommand(new CommandAddEventToRoom(this.roomRepository, idRoom, idEvent));
     }
 }

@@ -16,7 +16,7 @@ public class Room { //Aggregate
 
     public Room(String name, int capacity) {
         //Initialize id
-        id = globalId++;
+        id = ++globalId;
 
         this.name = name;
         this.capacity = capacity;
@@ -40,12 +40,12 @@ public class Room { //Aggregate
         this.roomSchedule.put(date, newRoomSchedule);
     }
 
-    public void addConcert(Calendar date, Artist artist, int capacity) {
+    public void addEvent(Calendar date, Artist artist, int capacity) {
         Event newEvent = new Concert(date, artist, capacity);
         this.eventList.add(newEvent);
     }
 
-    public void addPieceTheatre(Calendar beginDate, Calendar endingDate, String title, int capacity) {
+    public void addEvent(Calendar beginDate, Calendar endingDate, String title, int capacity) {
         Event newEvent = new PieceTheatre(beginDate,  endingDate, title, capacity);
         this.eventList.add(newEvent);
     }

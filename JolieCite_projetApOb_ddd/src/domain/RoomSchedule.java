@@ -20,7 +20,7 @@ public class RoomSchedule { // Entity
 
     public RoomSchedule(int hourStart, int minuteStart, int hourEnd, int minuteEnd) {
         //initialize id
-        id = globalId++;
+        id = ++globalId;
 
         int openingHour = hourStart;
         int openingMinute = minuteStart;

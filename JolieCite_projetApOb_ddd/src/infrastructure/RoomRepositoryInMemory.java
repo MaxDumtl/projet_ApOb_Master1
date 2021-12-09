@@ -129,6 +129,11 @@ public class RoomRepositoryInMemory implements RoomRepository {
     }
 
     @Override
+    public int getNumEvent(){
+        return this.memoryEvent.size();
+    }
+
+    @Override
     public Set<Event> findByDay(int id, int year, int month, int day) {
         Set<Event> listEventWeek = new HashSet<>();
         

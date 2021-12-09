@@ -9,12 +9,15 @@ public interface RoomRepository {
      * @return wanted room or NULL if it doesn't found
      */
     public Room findById(int id);
+    public Event finEventdById(int id);
     public Set<Event> findByDay(int id, int year, int month, int day);
+
 
     public Set<Room> load();
     public void save(Room room);
     public void update(Room room);
 
     public int getNumRoom();
+    public int getNumEvent();
     public Set<Event> getEvents();
 }
