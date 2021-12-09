@@ -49,24 +49,37 @@ public class TerminalTextUI {
         //switch to know what action to do
         switch(line){
             case "1": // Afficher le calendrier de la semaine
-                int entry = 0;
-                Scanner scannerWeek = new Scanner(System.in);
+                // int month = 0;
+                int startDay = 0;
+                int endDay = 0;
+                Scanner scannerDayPeriod = new Scanner(System.in);
 
-                System.out.println("Rentrez le numéro de semaine que vous souhaitez afficher");
-                String lineWeek = scannerWeek.nextLine();
-                entry = Integer.parseInt(lineWeek);
+                System.out.println("Rentrez le premier jour de la période que vous souhaitez afficher");
+                String lineStartDay = scannerDayPeriod.nextLine();
+                startDay = Integer.parseInt(lineStartDay);
                 
                 //for now it's only possible to display the week of the month we simulated
                 //should be like this for the finale app _
                 //while(entry < 1 || entry > 53){       <-'
-                while(entry < 1 || entry > 4){
+                while(startDay < 1 || startDay > 31){
                     System.out.println("Votre saisie est invalide veuillez recommencer");
                     
-                    lineWeek = scannerWeek.nextLine();
-                    entry = Integer.parseInt(lineWeek);
+                    lineStartDay = scannerDayPeriod.nextLine();
+                    startDay = Integer.parseInt(lineStartDay);
                 }
 
-                showWeekProgram(2021, 11, entry); // the month and the year are in hard for our test set
+                System.out.println("Rentrez le premier jour de la période que vous souhaitez afficher");
+                String lineEndDay = scannerDayPeriod.nextLine();
+                endDay = Integer.parseInt(lineEndDay);
+                
+                while(startDay < 1 || startDay > 31){
+                    System.out.println("Votre saisie est invalide veuillez recommencer");
+                    
+                    lineEndDay = scannerDayPeriod.nextLine();
+                    endDay = Integer.parseInt(lineEndDay);
+                }
+
+                showPeriodProgram(2021, 11, startDay, endDay); // the month and the year are in hard for our test set
                 break;
 
             case "2": // Afficher un jour
@@ -197,7 +210,7 @@ public class TerminalTextUI {
 
     private void showPrincipalAction() {
         System.out.println("> Liste des actions");
-        System.out.println("1) Afficher le calendrier de la semaine");
+        System.out.println("1) Afficher le calendrier d'une période'");
         System.out.println("2) Afficher un jour");
         System.out.println("3) Afficher la liste des événements");
         System.out.println("4) Afficher la liste des salles");
@@ -211,29 +224,17 @@ public class TerminalTextUI {
         this.worker = new Worker(this.bagOfCommands);
     }
 
-    private void showWeekProgram(int year, int month, int numWeek){
+    private void showPeriodProgram(int year, int month, int startPeriod, int endPeriod){
+        SimpleDateFormat monthFormat = new SimpleDateFormat("M");
         
-        Set<Room> listRoom = this.roomRepository.getRooms();
-
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.YEAR, year);
-        cal.set(Calendar.MONTH, month);
-        cal.set(Calendar.DAY_OF_MONTH, 1);
-
-        int firstWeekOfMonth = cal.get(Calendar.WEEK_OF_YEAR);
-        int numWeekInYear = firstWeekOfMonth + numWeek;
-        cal.set(Calendar.WEEK_OF_YEAR, numWeekInYear);
-
-        int firstDayOfWeek = cal.getFirstDayOfWeek();
-        int lastDayOfWeek = Calendar.SATURDAY - firstDayOfWeek;
-        System.out.println(numWeek + " / " + firstDayOfWeek + " / " + lastDayOfWeek);
-
-
-        System.out.println("==================================================================================");
-        for (int i = 0; i < 7; i++) {
-            // showDayProgram(year, month, i);
+        for(int i = startPeriod; i <= endPeriod; i++){
+            Calendar displayDay = new GregorianCalendar(year, month - 1, i);
+            int displayDayMonth = Integer.parseInt(monthFormat.format(displayDay.getTime()));
+            
+            if(displayDayMonth == month){
+                showDayProgram(year, month, i);
+            }
         }
-        System.out.println("==================================================================================");
     }
 
     private void showDayProgram(int year, int month, int day){
@@ -241,6 +242,7 @@ public class TerminalTextUI {
         SimpleDateFormat eventFormat = new SimpleDateFormat("HH : mm");
 
         Calendar searchedDay = new GregorianCalendar(year, month - 1, day);
+        System.out.println("=================================================================");
         System.out.println(dayFormat.format(searchedDay.getTime()));
         System.out.println("=================================================================");
 
