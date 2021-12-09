@@ -89,11 +89,11 @@ public class TerminalTextUI {
                 //     monthNumber = Integer.parseInt(lineMonth);
                 // }
 
-                System.out.println("Rentrez le numéro du jour que vous souhaitez afficher (1 = lundi, ..., 7 = dimanche)");
+                System.out.println("Rentrez le numéro du jour que vous souhaitez afficher");
                 String lineDay = scannerDate.nextLine();
                 dayNumber = Integer.parseInt(lineDay);
 
-                while(dayNumber < 1 || dayNumber > 7){
+                while(dayNumber < 1 || dayNumber > 31){
                     System.out.println("Le jour que vous avez saisi est invalide veuillez recommencer");
                     
                     lineDay = scannerDate.nextLine();
@@ -233,15 +233,14 @@ public class TerminalTextUI {
         System.out.println(dayFormat.format(searchedDay.getTime()));
         System.out.println("=================================================================");
 
-        for(int i = 0; i < roomRepository.getNumRoom(); i++){
+        for(int i = 1; i <= roomRepository.getNumRoom(); i++){
             Set<Event> eventsForThisDay = roomRepository.findByDay(i, year, month, day);
-            System.out.println(eventsForThisDay);
             System.out.println("---");
             System.out.print(roomRepository.findById(i).getName() + " : ");
             for(Event currentEvent : eventsForThisDay){
                 System.out.print("[ " + eventFormat.format(currentEvent.getProgrammedDay().getTime()) + " ]");
             }
-            System.out.println("---");
+            System.out.println("\n---");
         }
     }
 
