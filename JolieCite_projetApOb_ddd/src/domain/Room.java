@@ -62,6 +62,10 @@ public class Room { //Aggregate
         return this.name;
     }
 
+    public int getCapacity(){
+        return this.capacity;
+    }
+
 
     public List<Event> getEvent() {
         return this.eventList;

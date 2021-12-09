@@ -29,16 +29,16 @@ public class RoomSchedule { // Entity
     
     }
 
-    public RoomSchedule(Calendar openingTime, int hourOpened) {
-        //initialize id
-        id = globalId++;
+    // public RoomSchedule(Calendar openingTime, int hourOpened) {
+    //     //initialize id
+    //     id = globalId++;
 
-        this.openingTime = openingTime;
+    //     this.openingTime = openingTime;
 
-        //intialize ending time by adding number of hours opened to ending time
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(openingTime.getTime());
-        calendar.add(Calendar.HOUR_OF_DAY, hourOpened);
-        this.endingTime = calendar;
-    }
+    //     //intialize ending time by adding number of hours opened to ending time
+    //     Calendar calendar = Calendar.getInstance();
+    //     calendar.setTime(openingTime.getTime());
+    //     calendar.add(Calendar.HOUR_OF_DAY, hourOpened);
+    //     this.endingTime = calendar;
+    // }
 }

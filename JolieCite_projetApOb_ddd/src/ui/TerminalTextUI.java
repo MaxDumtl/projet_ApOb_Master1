@@ -93,8 +93,12 @@ public class TerminalTextUI {
             case "3": // Afficher la liste des événements
                 showEvents();
                 break;
+            
+            case "4": // Afficher la liste des salles
+                showRooms();
+                break;
 
-            case "4": // Associer un évènement à un jour
+            case "5": // Associer un évènement à un jour
                 //TODO
                 int maxIdRoom = this.roomRepository.getNumRoom();
                 int maxIdEvent = this.roomRepository.getNumEvent();
@@ -147,7 +151,11 @@ public class TerminalTextUI {
     private void showEvents() {
         SimpleDateFormat dayFormat = new SimpleDateFormat("dd/MMMM/yyyy");
         Set<Event> listEvents = this.roomRepository.getEvents();
-        System.out.println(listEvents);
+        
+        System.out.println("************************************************************************************************************************************************");
+        System.out.println("Liste des événements****************************************************************************************************************************");
+        System.out.println("************************************************************************************************************************************************");
+
         for(Event currentEvent : listEvents){
             if(currentEvent instanceof Concert){
                 Concert currentConcert = (Concert)currentEvent;
@@ -159,6 +167,23 @@ public class TerminalTextUI {
             }
         }
 
+        System.out.println("************************************************************************************************************************************************");
+    }
+
+    private void showRooms() {
+        SimpleDateFormat dayFormat = new SimpleDateFormat("dd/MMMM/yyyy");
+        Set<Room> listRoom = this.roomRepository.getRooms();
+        
+        System.out.println("************************************");
+        System.out.println("Liste des salles********************");
+        System.out.println("************************************");
+
+        for(Room currentRoom : listRoom){
+            System.out.println("(" + currentRoom.getId() + ") " + currentRoom.getName() + " -  Capacité : " + currentRoom.getCapacity());
+        }
+
+        System.out.println("************************************");
+
     }
 
     private void showPrincipalAction() {
@@ -166,7 +191,8 @@ public class TerminalTextUI {
         System.out.println("1) Afficher le calendrier de la semaine");
         System.out.println("2) Afficher un jour");
         System.out.println("3) Afficher la liste des événements");
-        System.out.println("4) Associer un évènement à un jour");
+        System.out.println("4) Afficher la liste des salles");
+        System.out.println("5) Associer un évènement à un jour");
         System.out.println("aide) Affiche la liste des commandes");
     }
 

@@ -153,4 +153,9 @@ public class RoomRepositoryInMemory implements RoomRepository {
     public Set<Event> getEvents() {
         return this.memoryEvent;
     }
+
+    @Override
+    public Set<Room> getRooms() {
+        return this.memoryRoom;
+    }
 }
