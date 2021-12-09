@@ -33,13 +33,10 @@ public class TerminalTextUI {
 
         showPrincipalAction();
 
-        //run the worker
-        Thread thread = new Thread(this.worker, "Worker thread");
-        thread.start();
-
         //read the console and execute principal action with a loop
         while (!done) {
             executePrincipalCommand();
+            this.worker.run();
         }
 
     }
@@ -252,13 +249,25 @@ public class TerminalTextUI {
             System.out.println("---");
             System.out.print(roomRepository.findById(i).getName() + " : ");
             for(Event currentEvent : eventsForThisDay){
-                System.out.print("[ " + eventFormat.format(currentEvent.getProgrammedDay().getTime()) + " ]");
+
+                if(currentEvent instanceof Concert){
+                    Concert currentConcert = (Concert)currentEvent;
+                    System.out.println(" Concert | Artiste : " + currentConcert.getArtist().getName() + " -  Date : " + dayFormat.format(currentConcert.getDate().getTime()) + " -  Capacité : " + currentConcert.getCapacity());
+                }
+                else{
+                    PieceTheatre currentPiece = (PieceTheatre)currentEvent;
+                    System.out.println(" Pièce de Théatre | Nom : " + currentPiece.getTitle() + " -  Dates : du " + dayFormat.format(currentPiece.getBeginDate().getTime()) +"-"+ dayFormat.format(currentPiece.getEndingDate().getTime())  + " -  Capacité : " + currentPiece.getCapacity());
+                }
+
+
+//                System.out.print("[ " + eventFormat.format(currentEvent.getProgrammedDay().getTime()) + " ]");
             }
             System.out.println("\n---");
         }
     }
 
     public void addEventToRoom(int idEvent, int hourEvent){
-        this.bagOfCommands.pushCommand(new CommandAddEventToRoom(this.roomRepository, idEvent, hourEvent));
+        Command commandToAdd = new CommandAddEventToRoom(this.roomRepository, idEvent, hourEvent);
+        this.bagOfCommands.pushCommand(commandToAdd);
     }
 }

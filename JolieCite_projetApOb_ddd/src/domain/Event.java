@@ -44,7 +44,8 @@ public class Event { //Entity
         }
 
         boolean isSameYear = this.programmedDay.get(Calendar.YEAR) == year;
-        boolean isSameMonth = this.programmedDay.get(Calendar.MONTH) == month;
+        int m = this.programmedDay.get(Calendar.MONTH);
+        boolean isSameMonth = this.programmedDay.get(Calendar.MONTH) == month-1;
         boolean isSameDay = this.programmedDay.get(Calendar.DAY_OF_MONTH) == day;
 
         return isSameDay && isSameMonth && isSameYear && isSameYear;

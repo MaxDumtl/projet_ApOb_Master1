@@ -1,6 +1,6 @@
 package application;
 
-public class Worker implements Runnable{
+public class Worker {
 
     private BagOfCommands commands;  // dont initiate, get it from an other class with the constructor (an aggregation)
 
@@ -9,24 +9,16 @@ public class Worker implements Runnable{
     }
 
     /**
-     * Execute commands using thread
-     * It get a command in the list and execute it as a thread (to execute parallely than other worker)
+     * Execute a command from the list and execute it
      */
-    @Override
     public void run() {
         //get a command in the list
-        while (true) {
+        while (!this.commands.isEmpty()) {
 
-            if (!this.commands.isEmpty()) {
+            Command currentCommand = this.commands.getCommand();
 
-                Command currentCommand = this.commands.getCommand();
-
-                //execute it
-                currentCommand.execute();
-
-            } else {
-                //TODO if the commend queue is empty (is it necessary to do something ?)
-            }
+            //execute it
+            currentCommand.execute();
         }
     }
 }
