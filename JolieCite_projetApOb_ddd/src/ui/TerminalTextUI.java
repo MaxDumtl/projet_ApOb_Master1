@@ -42,7 +42,9 @@ public class TerminalTextUI {
         showPrincipalAction();
 
         //run the worker
-        this.worker.run();
+//        this.worker.start();
+        Thread thread = new Thread(this.worker, "Worker thread");
+        thread.start();
 
         //read the console and execute principal action with a loop
         while (!done) {

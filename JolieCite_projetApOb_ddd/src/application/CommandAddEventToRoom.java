@@ -41,6 +41,7 @@ public class CommandAddEventToRoom extends Command {
     }
 
     private Room getSelectedRoom() {
+        Room selectedRoom = null;
         Event event = this.repository.finEventdById(this.eventId);
         int eventCapacity = event.getCapacity();
 
@@ -76,8 +77,10 @@ public class CommandAddEventToRoom extends Command {
 
             //check if already an event at this room and hour
             //TODO
+
+            selectedRoom = currentRoom;
         }
 
-        return null;
+        return selectedRoom;
     }
 }

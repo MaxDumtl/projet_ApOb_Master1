@@ -1,5 +1,6 @@
 package infrastructure;
 
+import domain.Event;
 import domain.Room;
 import domain.RoomRepository;
 
@@ -32,6 +33,16 @@ public class RoomRepositoryJson implements RoomRepository{
         }
 
         return room;
+    }
+
+    @Override
+    public Event finEventdById(int id) {
+        return null;
+    }
+
+    @Override
+    public Set<Event> findByDay(int id, int year, int month, int day) {
+        return null;
     }
 
     @Override
@@ -74,5 +85,25 @@ public class RoomRepositoryJson implements RoomRepository{
     public void update(Room room) {
         this.memory.add(room); //TODO check if its done what it has to
     }
-    
+
+    @Override
+    public int getNumRoom() {
+        return 0;
+    }
+
+    @Override
+    public int getNumEvent() {
+        return 0;
+    }
+
+    @Override
+    public Set<Room> getRooms() {
+        return null;
+    }
+
+    @Override
+    public Set<Event> getEvents() {
+        return null;
+    }
+
 }
