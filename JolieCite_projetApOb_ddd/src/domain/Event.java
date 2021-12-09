@@ -17,6 +17,14 @@ public class Event { //Entity
         this.programmedDay = null;
     }
 
+    public Event(int capacity, Calendar programmedDay) {
+        //initialize id
+        this.id = ++globalId;
+        this.capacity = capacity;
+
+        this.programmedDay = programmedDay;
+    }
+
     public int getId() {
         return id;
     }

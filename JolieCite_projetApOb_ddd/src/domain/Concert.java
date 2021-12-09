@@ -15,6 +15,13 @@ public class Concert extends Event{ //Entity
         this.artist = artist;
     }
 
+    public Concert(Calendar date, Artist artist, int capacity, Calendar programmedDay) {
+        super(capacity, programmedDay);
+
+        this.date = date;
+        this.artist = artist;
+    }
+
     public Calendar getDate() {
         return date;
     }

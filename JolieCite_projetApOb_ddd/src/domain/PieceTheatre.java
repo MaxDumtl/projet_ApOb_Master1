@@ -18,6 +18,16 @@ public class PieceTheatre extends Event{ //Entity
         this.title = title;
     }
 
+    public PieceTheatre(Calendar beginDate, Calendar endingDate, String title, int capacity, Calendar programmedDay) {
+
+        super(capacity, programmedDay);
+
+        //initialize attributes
+        this.beginDate = beginDate;
+        this.endingDate = endingDate;
+        this.title = title;
+    }
+
     public Calendar getBeginDate() {
         return beginDate;
     }
