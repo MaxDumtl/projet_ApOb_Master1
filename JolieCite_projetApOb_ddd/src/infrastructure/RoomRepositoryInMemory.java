@@ -140,11 +140,15 @@ public class RoomRepositoryInMemory implements RoomRepository {
         Room room = findById(id);
         
         List<Event> temproraryEventList = room.getEvent();
-        for(Event currentEvent : temproraryEventList){
-            if(currentEvent.isSameDay(year, month, day)){
-                listEventWeek.add(currentEvent);
+
+        if(!temproraryEventList.isEmpty()){
+            for(Event currentEvent : temproraryEventList){
+                if(currentEvent.isSameDay(year, month, day)){
+                    listEventWeek.add(currentEvent);
+                }
             }
         }
+        
 
         return listEventWeek;
     }

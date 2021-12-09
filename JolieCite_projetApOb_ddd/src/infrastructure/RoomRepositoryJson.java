@@ -1,5 +1,6 @@
 package infrastructure;
 
+import domain.Event;
 import domain.Room;
 import domain.RoomRepository;
 
@@ -42,7 +43,7 @@ public class RoomRepositoryJson implements RoomRepository{
         String memory_json = null; 
         
         try {
-            Path fileName = Path.of("src/file/save.json");
+            Path fileName = Path.of("src/json/save.json");
             memory_json = Files.readString(fileName);
         } catch (IOException e) {
             e.printStackTrace();
@@ -61,7 +62,7 @@ public class RoomRepositoryJson implements RoomRepository{
         String memory_json = gson_object.toJson(this.memory);
 
         try {
-            FileWriter json_writer = new FileWriter("src/file/save.json");
+            FileWriter json_writer = new FileWriter("src/json/save.json");
             json_writer.write(memory_json);
             json_writer.flush();
             json_writer.close();
@@ -73,6 +74,42 @@ public class RoomRepositoryJson implements RoomRepository{
     @Override
     public void update(Room room) {
         this.memory.add(room); //TODO check if its done what it has to
+    }
+
+    @Override
+    public Event finEventdById(int id) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Set<Event> findByDay(int id, int year, int month, int day) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public int getNumRoom() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public int getNumEvent() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public Set<Room> getRooms() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Set<Event> getEvents() {
+        // TODO Auto-generated method stub
+        return null;
     }
     
 }

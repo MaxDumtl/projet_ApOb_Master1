@@ -66,6 +66,9 @@ public class TerminalTextUI {
                 String lineWeek = scannerWeek.nextLine();
                 entry = Integer.parseInt(lineWeek);
                 
+                //for now it's only possible to display the week of the month we simulated
+                //should be like this for the finale app _
+                //while(entry < 1 || entry > 53){       <-'
                 while(entry < 1 || entry > 4){
                     System.out.println("Votre saisie est invalide veuillez recommencer");
                     
@@ -73,21 +76,38 @@ public class TerminalTextUI {
                     entry = Integer.parseInt(lineWeek);
                 }
 
-                showWeekProgram(2021, 11, entry);
+                showWeekProgram(2021, 11, entry); // the month and the year are in hard for our test set
                 break;
+
             case "2": // Afficher un jour
-                int weekNumber = 0;
                 int dayNumber = 0;
-                scannerWeek = new Scanner(System.in);
+                // int monthNumber = 0;
+                Scanner scannerDate = new Scanner(System.in);
 
-                System.out.println("Rentrez le numéro de semaine que vous souhaitez sélectionner");
-                lineWeek = scannerWeek.nextLine();
-                weekNumber = Integer.parseInt(lineWeek);
+                // The part where the user choose the month in the current year to display
+                // System.out.println("Rentrez le numéro du mois que vous souhaitez afficher (1 = janvier, ..., 12 = décembre)");
+                // String lineMonth = scannerDate.nextLine();
+                // monthNumber = Integer.parseInt(lineMonth);
+
+                // while(monthNumber < 1 || monthNumber > 12){
+                //     System.out.println("Le mois que vous avez saisi est invalide veuillez recommencer");
+                    
+                //     lineMonth = scannerDate.nextLine();
+                //     monthNumber = Integer.parseInt(lineMonth);
+                // }
+
                 System.out.println("Rentrez le numéro du jour que vous souhaitez afficher (1 = lundi, ..., 7 = dimanche)");
-                lineWeek = scannerWeek.nextLine();
-                dayNumber = Integer.parseInt(lineWeek) - 1;//TODO debugg and check if it correctly to the good day number
+                String lineDay = scannerDate.nextLine();
+                dayNumber = Integer.parseInt(lineDay);
 
-                showDayProgram(2021, 11, dayNumber);
+                while(dayNumber < 1 || dayNumber > 7){
+                    System.out.println("Le jour que vous avez saisi est invalide veuillez recommencer");
+                    
+                    lineDay = scannerDate.nextLine();
+                    dayNumber = Integer.parseInt(lineDay);
+                }
+
+                showDayProgram(2021, 11, dayNumber); // the month and the year are in hard for our test set
                 break;
 
             case "3": // Afficher la liste des événements
@@ -202,6 +222,9 @@ public class TerminalTextUI {
     }
 
     private void showWeekProgram(int year, int month, int numWeek){
+        
+        Set<Room> listRoom = this.roomRepository.getRooms();
+
         System.out.println("==================================================================================");
         for (int i = 0; i < 7; i++) {
             // showDayProgram(year, month, i);
@@ -219,7 +242,7 @@ public class TerminalTextUI {
 
         for(int i = 0; i < roomRepository.getNumRoom(); i++){
             Set<Event> eventsForThisDay = roomRepository.findByDay(i, year, month, day);
-
+            System.out.println(eventsForThisDay);
             System.out.println("---");
             System.out.print(roomRepository.findById(i).getName() + " : ");
             for(Event currentEvent : eventsForThisDay){
