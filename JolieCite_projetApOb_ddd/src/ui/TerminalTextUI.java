@@ -100,37 +100,36 @@ public class TerminalTextUI {
 
             case "5": // Associer un évènement à un jour
                 //TODO
-                int maxIdRoom = this.roomRepository.getNumRoom();
                 int maxIdEvent = this.roomRepository.getNumEvent();
-                Scanner scannerEventRoom = new Scanner(System.in);
-                
-                int roomNumber = 0;
+                Scanner scannerEventHour = new Scanner(System.in);
+                               
+                int hourEvent = 0;
                 int eventNumber = 0;
                 
                 System.out.println("Rentrez le numéro de l'événement que vous voulez programmer");
-                String lineEventRoom = scannerEventRoom.nextLine();
-                eventNumber = Integer.parseInt(lineEventRoom);
+                String lineEvent = scannerEventHour.nextLine();
+                eventNumber = Integer.parseInt(lineEvent);
                 
                 while(eventNumber < 1 || eventNumber > maxIdEvent){
                     System.out.println("L'événement que vous avez saisi est invalide veuillez recommencer");
                     
-                    lineEventRoom = scannerEventRoom.nextLine();
-                    eventNumber = Integer.parseInt(lineEventRoom);
+                    lineEvent = scannerEventHour.nextLine();
+                    eventNumber = Integer.parseInt(lineEvent);
                 }
 
-                System.out.println("Rentrez le numéro de la salle à laquelle vous voulez programmer l'événement");
-                String lineRoom = scannerEventRoom.nextLine();
-                roomNumber = Integer.parseInt(lineRoom);
+                System.out.println("Rentrez l'heure à laquelle vous voulez programmer votre événement au formet 24h");
+                String lineHour = scannerEventHour.nextLine();
+                hourEvent = Integer.parseInt(lineHour);
                 
-                while(roomNumber < 1 || roomNumber > maxIdRoom){
-                    System.out.println("La salle que vous avez saisie est invalide veuillez recommencer");
+                while(hourEvent < 1 || hourEvent > 24){
+                    System.out.println("L'heure que vous avez saisie est invalide veuillez recommencer");
                     
-                    lineRoom = scannerEventRoom.nextLine();
-                    roomNumber = Integer.parseInt(lineRoom);
+                    lineHour = scannerEventHour.nextLine();
+                    hourEvent = Integer.parseInt(lineHour);
                 }
 
-                addEventToRoom(roomNumber, eventNumber);
-                System.out.println("L'événement " + eventNumber + " à été ajouté à la salle " + roomNumber);
+                addEventToRoom(eventNumber, hourEvent);
+                System.out.println("L'événement " + eventNumber + " à été programmé");
                 break;
 
             case "aide": // Afficher la liste des commandes
@@ -192,7 +191,7 @@ public class TerminalTextUI {
         System.out.println("2) Afficher un jour");
         System.out.println("3) Afficher la liste des événements");
         System.out.println("4) Afficher la liste des salles");
-        System.out.println("5) Associer un évènement à un jour");
+        System.out.println("5) Programmer un événement");
         System.out.println("aide) Affiche la liste des commandes");
     }
 
@@ -230,7 +229,7 @@ public class TerminalTextUI {
         }
     }
 
-    public void addEventToRoom(int idRoom, int idEvent){
-        this.bagOfCommands.pushCommand(new CommandAddEventToRoom(this.roomRepository, idRoom, idEvent));
+    public void addEventToRoom(int idEvent, int hourEvent){
+        this.bagOfCommands.pushCommand(new CommandAddEventToRoom(this.roomRepository, idEvent, hourEvent));
     }
 }

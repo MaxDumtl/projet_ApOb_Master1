@@ -3,9 +3,9 @@ package domain;
 import java.util.Calendar;
 import java.util.*;
 
-public class RoomSchedule { // Entity
-    private static int globalId = 0;
-    private final int id; //TODO check if necessary to encapsule ConcertId in a ValueObject if it's another thing than an int
+public class RoomSchedule { // Value Object
+    // private static int globalId = 0;
+    // private final int id; //TODO check if necessary to encapsule ConcertId in a ValueObject if it's another thing than an int
 
     //first element of the array is the hour
     //second element of the array is the minute
@@ -20,15 +20,26 @@ public class RoomSchedule { // Entity
 
     public RoomSchedule(int hourStart, int minuteStart, int hourEnd, int minuteEnd) {
         //initialize id
-        id = ++globalId;
-
+        // id = ++globalId;
         int openingHour = hourStart;
         int openingMinute = minuteStart;
         int endingHour = hourEnd;
         int endingMinute = minuteEnd;
-    
     }
 
+    public int getHourStart(){
+        return this.openingHour;
+    }
+    public int getMinuteStart(){
+        return this.openingMinute;
+    }
+    public int getHourEnd(){
+        return this.endingHour;
+    }
+    public int getMinuteEnd(){
+        return this.endingMinute;
+    }
+    
     // public RoomSchedule(Calendar openingTime, int hourOpened) {
     //     //initialize id
     //     id = globalId++;
