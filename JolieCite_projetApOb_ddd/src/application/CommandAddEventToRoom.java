@@ -25,7 +25,6 @@ public class CommandAddEventToRoom extends Command {
         Event event = this.repository.finEventdById(eventId);
         Room room = getSelectedRoom(); //TODO
 
-
         //add the event to the room
         if (event instanceof Concert) {
             Concert concert = (Concert) event;

@@ -14,9 +14,6 @@ public class Worker implements Runnable{
      */
     @Override
     public void run() {
-        //TODO use a Thread (and Comand.execute() )
-        //TODO check if jsut like that, it is necessary to run the thread by overriding or if need more code
-
         //get a command in the list
         while (true) {
 

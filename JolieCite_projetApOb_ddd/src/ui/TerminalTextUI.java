@@ -13,13 +13,6 @@ import javax.sound.sampled.SourceDataLine;
 
 public class TerminalTextUI {
 
-    //OK : on cree un bag
-    //OK : on cree un service on lui passe le bag aveec le constructeur
-    //OK : on cree le worker et on lui psse le bag via constrcuteur
-    //OK : on lance le worker.run
-    //on boucle infinie sur service pour le manipuler (dans this.run() )
-    //  \_ le worker tournera et executera les commmandes
-
     private BagOfCommands bagOfCommands;
     private RoomService roomService;
     private Worker worker;
@@ -29,7 +22,6 @@ public class TerminalTextUI {
     private boolean done = false;
 
     public TerminalTextUI(RoomRepository roomRepository) {
-        //TODO
         this.roomRepository = roomRepository;
     }
 
@@ -42,7 +34,6 @@ public class TerminalTextUI {
         showPrincipalAction();
 
         //run the worker
-//        this.worker.start();
         Thread thread = new Thread(this.worker, "Worker thread");
         thread.start();
 

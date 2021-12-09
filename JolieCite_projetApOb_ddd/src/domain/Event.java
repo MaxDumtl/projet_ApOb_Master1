@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 public class Event { //Entity
     private static int globalId = 0;
-    private final int id; //TODO check if necessary to encapsule ConcertId in a ValueObject if it's another thing than an int
+    private final int id;
 
     private int capacity;
     private Calendar programmedDay;
@@ -35,7 +35,6 @@ public class Event { //Entity
             return false;
         }
 
-        //TODO debugg it
         boolean isSameYear = this.programmedDay.get(Calendar.YEAR) == year;
         boolean isSameMonth = this.programmedDay.get(Calendar.MONTH) == month;
         boolean isSameDay = this.programmedDay.get(Calendar.DAY_OF_MONTH) == day;

@@ -9,6 +9,7 @@ public class Main {
         //set the data test
         RoomRepositoryInMemory roomRepositoryMemory = new RoomRepositoryInMemory();
 
+        //create the user interface
         TerminalTextUI ui = new TerminalTextUI(roomRepositoryMemory);
 
         //run ui
