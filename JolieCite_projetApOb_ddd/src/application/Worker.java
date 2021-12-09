@@ -13,19 +13,20 @@ public class Worker implements Runnable{
      * It get a command in the list and execute it as a thread (to execute parallely than other worker)
      */
     @Override
-    public void run(){
-        //TODO use a Thread (and Comand.execute() )
-        //TODO check if jsut like that, it is necessary to run the thread by overriding or if need more code
-
+    public void run() {
         //get a command in the list
-        if(!this.commands.isEmpty()){
-            Command currentCommand = this.commands.getCommand();
+        while (true) {
 
-            //execute it
-            currentCommand.execute();
+            if (!this.commands.isEmpty()) {
 
-        } else {
-            //TODO if the commend queue is empty (is it necessary to do something ?)
+                Command currentCommand = this.commands.getCommand();
+
+                //execute it
+                currentCommand.execute();
+
+            } else {
+                //TODO if the commend queue is empty (is it necessary to do something ?)
+            }
         }
     }
 }

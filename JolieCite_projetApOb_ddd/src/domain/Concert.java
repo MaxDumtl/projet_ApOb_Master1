@@ -11,9 +11,6 @@ public class Concert extends Event{ //Entity
     public Concert(Calendar date, Artist artist, int capacity) {
         super(capacity);
 
-//        //initialize id //concert.id == event.id
-//        id = globalId++;
-
         this.date = date;
         this.artist = artist;
     }

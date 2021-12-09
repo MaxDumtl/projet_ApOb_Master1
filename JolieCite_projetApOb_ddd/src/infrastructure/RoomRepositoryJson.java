@@ -36,6 +36,16 @@ public class RoomRepositoryJson implements RoomRepository{
     }
 
     @Override
+    public Event finEventdById(int id) {
+        return null;
+    }
+
+    @Override
+    public Set<Event> findByDay(int id, int year, int month, int day) {
+        return null;
+    }
+
+    @Override
     public Set<Room> load() {
         
         Gson gson_object = new Gson();
@@ -77,39 +87,23 @@ public class RoomRepositoryJson implements RoomRepository{
     }
 
     @Override
-    public Event finEventdById(int id) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Set<Event> findByDay(int id, int year, int month, int day) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
     public int getNumRoom() {
-        // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
     public int getNumEvent() {
-        // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
     public Set<Room> getRooms() {
-        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public Set<Event> getEvents() {
-        // TODO Auto-generated method stub
         return null;
     }
-    
+
 }

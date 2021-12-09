@@ -4,13 +4,11 @@ import java.util.*;
 
 public class Room { //Aggregate
     private static int globalId = 0;
-    private final int id; //TODO check if necessary to encapsule ConcertId in a ValueObject if it's another thing than an int
+    private final int id;
 
     private String name;
     private int capacity;
-//    private RoomSchedule roomSchedule;
-    private Map<Calendar, RoomSchedule> roomSchedule; //un roomschedule pour chaque jour de l'annee
-//    private Date openingDate;
+    private Map<Calendar, RoomSchedule> roomSchedule; //one RoomSchedule for each day
 
     private List<Event> eventList;
 
@@ -20,7 +18,6 @@ public class Room { //Aggregate
 
         this.name = name;
         this.capacity = capacity;
-//        this.roomSchedule = roomSchedule;
         this.roomSchedule = new HashMap<>();
         this.eventList = new ArrayList<>();
     }
@@ -30,7 +27,6 @@ public class Room { //Aggregate
         id = globalId++;
 
         this.capacity = capacity;
-//        this.roomSchedule = roomSchedule;
         this.roomSchedule = new HashMap<>();
         this.eventList = eventList;
     }
@@ -50,10 +46,6 @@ public class Room { //Aggregate
         this.eventList.add(newEvent);
     }
 
-    public void removeEvent(Event event) {
-        this.eventList.remove(event);
-    }
-
     public int getId() {
         return id;
     }
@@ -69,5 +61,9 @@ public class Room { //Aggregate
 
     public List<Event> getEvent() {
         return this.eventList;
+    }
+
+    public RoomSchedule getSchedule(Calendar day) {
+        return this.roomSchedule.get(day);
     }
 }
